@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-const API_URL = "http://localhost:5000/api/requests";
-const SERVICES_API_URL = "http://localhost:5000/api/services";
-const SETTINGS_API_URL = "http://localhost:5000/api/settings";
+const API_URL = "https://xaaji-electronics-api.onrender.com/api/requests";
+const SERVICES_API_URL = "https://xaaji-electronics-api.onrender.com/api/services";
+const SETTINGS_API_URL = "https://xaaji-electronics-api.onrender.com/api/settings";
 
 function RequestService() {
   const location = useLocation();

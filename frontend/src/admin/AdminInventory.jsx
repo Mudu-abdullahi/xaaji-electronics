@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 
-const API_URL = "http://localhost:5000/api/inventory";
+const API_URL = "https://xaaji-electronics-api.onrender.com/api/inventory";
 
 function AdminInventory() {
   const [inventory, setInventory] = useState([]);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const REQUESTS_API = "http://localhost:5000/api/requests";
-const ELECTRICIANS_API = "http://localhost:5000/api/electricians";
+const REQUESTS_API = "https://xaaji-electronics-api.onrender.com/api/requests";
+const ELECTRICIANS_API = "https://xaaji-electronics-api.onrender.com/api/electricians";
 
 function AdminRequests() {
   // =========================================================

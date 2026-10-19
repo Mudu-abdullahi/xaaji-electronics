@@ -1,8 +1,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-const API_URL = "http://localhost:5000/api/services";
-const REQUESTS_URL = "http://localhost:5000/api/requests";
+const API_URL = "https://xaaji-electronics-api.onrender.com/api/services";
+const REQUESTS_URL = "https://xaaji-electronics-api.onrender.com/api/requests";
 
 const emptyForm = {
   name: "",

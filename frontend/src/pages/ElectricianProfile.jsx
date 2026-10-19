@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const API_URL = "http://localhost:5000/api/electricians";
+const API_URL = "https://xaaji-electronics-api.onrender.com/api/electricians";
 
 function ElectricianProfile() {
   const { id } = useParams();

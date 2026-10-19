@@ -24,7 +24,7 @@ function AdminDashboard() {
       setError("");
 
       const response = await fetch(
-        "http://localhost:5000/api/products"
+        "https://xaaji-electronics-api.onrender.com/api/products"
       );
 
       if (!response.ok) {
@@ -75,7 +75,7 @@ function AdminDashboard() {
       setJobsError("");
 
       const response = await fetch(
-        "http://localhost:5000/api/jobs"
+        "https://xaaji-electronics-api.onrender.com/api/jobs"
       );
 
       if (!response.ok) {

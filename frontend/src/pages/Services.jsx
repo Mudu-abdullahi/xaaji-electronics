@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const API_URL = "http://localhost:5000/api/services";
+const API_URL = "https://xaaji-electronics-api.onrender.com/api/services";
 
 // Fallback images used when a service has no image in MongoDB.
 // You can replace these URLs with your own Cloudinary images.

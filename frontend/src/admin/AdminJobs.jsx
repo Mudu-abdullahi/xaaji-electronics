@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const API_URL = "http://localhost:5000/api/jobs";
+const API_URL = "https://xaaji-electronics-api.onrender.com/api/jobs";
 
 const initialJob = {
   customer: "",

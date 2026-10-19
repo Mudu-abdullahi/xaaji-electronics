@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const API_URL = "http://localhost:5000/api/payments";
+const API_URL = "https://xaaji-electronics-api.onrender.com/api/payments";
 
 function AdminPayments() {
   const [payments, setPayments] = useState([]);
