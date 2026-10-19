@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* ================================
+   XAAJI ELECTRONICS THEME
+================================ */
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --surface: #ffffff;
+  --surface-secondary: #f9fafb;
+  --border: #e5e7eb;
+  --muted: #6b7280;
+}
+
+/* Dark Mode */
+html.dark {
+  --background: #111827;
+  --foreground: #f9fafb;
+  --surface: #1f2937;
+  --surface-secondary: #111827;
+  --border: #374151;
+  --muted: #9ca3af;
+}
+
+/* Global body */
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
