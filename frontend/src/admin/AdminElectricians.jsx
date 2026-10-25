@@ -1,6 +1,7 @@
+import adminFetch, { API_BASE_URL } from "../config/adminFetch";
 import { useEffect, useState } from "react";
 
-const API_URL = "https://xaaji-electronics-api.onrender.com/api/electricians";
+const API_URL = `${API_BASE_URL}/api/electricians`;
 
 function AdminElectricians() {
   const [electricians, setElectricians] = useState([]);
@@ -46,7 +47,7 @@ function AdminElectricians() {
       setLoading(true);
       setError("");
 
-      const response = await fetch(API_URL);
+      const response = await adminFetch(API_URL);
       const result = await response.json();
 
       if (!response.ok) {
@@ -176,7 +177,7 @@ function AdminElectricians() {
 
       console.log("Sending electrician data:", data);
 
-      const response = await fetch(url, {
+      const response = await adminFetch(url, {
         method,
         headers: {
           "Content-Type": "application/json",
@@ -249,7 +250,7 @@ function AdminElectricians() {
       setError("");
       setSuccess("");
 
-      const response = await fetch(
+      const response = await adminFetch(
         `${API_URL}/${electrician._id}`,
         {
           method: "DELETE",

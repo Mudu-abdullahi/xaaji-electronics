@@ -1,5 +1,6 @@
 
 const express = require("express");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const {
   getSettings,
@@ -9,6 +10,6 @@ const {
 const router = express.Router();
 
 router.get("/", getSettings);
-router.patch("/", updateSettings);
+router.patch("/", requireAdmin, updateSettings);
 
 module.exports = router;

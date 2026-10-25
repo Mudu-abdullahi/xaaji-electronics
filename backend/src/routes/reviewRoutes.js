@@ -1,4 +1,5 @@
 const express = require("express");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const {
   getReviews,
@@ -36,13 +37,13 @@ router.post("/", createReview);
 // PUT /api/reviews/:id
 // ========================================
 
-router.put("/:id", updateReview);
+router.put("/:id", requireAdmin, updateReview);
 
 // ========================================
 // DELETE REVIEW
 // DELETE /api/reviews/:id
 // ========================================
 
-router.delete("/:id", deleteReview);
+router.delete("/:id", requireAdmin, deleteReview);
 
 module.exports = router;

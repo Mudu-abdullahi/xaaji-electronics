@@ -1,5 +1,6 @@
 
 const express = require("express");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const {
   getPayments,
@@ -10,6 +11,8 @@ const {
 } = require("../controllers/paymentController");
 
 const router = express.Router();
+
+router.use(requireAdmin);
 
 router.get("/", getPayments);
 router.get("/:id", getPaymentById);

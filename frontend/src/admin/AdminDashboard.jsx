@@ -1,3 +1,4 @@
+import adminFetch, { API_BASE_URL } from "../config/adminFetch";
 import { useEffect, useState } from "react";
 
 function AdminDashboard() {
@@ -23,8 +24,8 @@ function AdminDashboard() {
       setLoading(true);
       setError("");
 
-      const response = await fetch(
-        "https://xaaji-electronics-api.onrender.com/api/products"
+      const response = await adminFetch(
+        `${API_BASE_URL}/api/products`
       );
 
       if (!response.ok) {
@@ -74,8 +75,8 @@ function AdminDashboard() {
       setJobsLoading(true);
       setJobsError("");
 
-      const response = await fetch(
-        "https://xaaji-electronics-api.onrender.com/api/jobs"
+      const response = await adminFetch(
+        `${API_BASE_URL}/api/jobs`
       );
 
       if (!response.ok) {

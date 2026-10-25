@@ -1,4 +1,6 @@
+
 const express = require("express");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const {
   getProducts,
@@ -10,14 +12,13 @@ const {
 
 const router = express.Router();
 
+// Public: view products
 router.get("/", getProducts);
-
 router.get("/:id", getProductById);
 
-router.post("/", createProduct);
-
-router.put("/:id", updateProduct);
-
-router.delete("/:id", deleteProduct);
+// Admin only: manage products
+router.post("/", requireAdmin, createProduct);
+router.put("/:id", requireAdmin, updateProduct);
+router.delete("/:id", requireAdmin, deleteProduct);
 
 module.exports = router;

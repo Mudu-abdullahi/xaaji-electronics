@@ -14,6 +14,7 @@ const paymentRoutes = require("./routes/paymentRoutes");
 const expenseRoutes = require("./routes/expenseRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
 const settingsRoutes = require("./routes/settingsRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use("/api/payments", paymentRoutes);
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/settings", settingsRoutes);
+app.use("/api/auth", authRoutes);
 /*
   Test Route
 */

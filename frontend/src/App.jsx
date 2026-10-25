@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -14,6 +15,7 @@ import Products from "./pages/Products";
 
 import ScrollToTop from "./components/ScrollToTop";
 
+// Admin components
 import AdminLayout from "./admin/AdminLayout";
 import AdminDashboard from "./admin/AdminDashboard";
 import AdminRequests from "./admin/AdminRequests";
@@ -28,6 +30,10 @@ import AdminExpenses from "./admin/AdminExpenses";
 import AdminReports from "./admin/AdminReports";
 import AdminSettings from "./admin/AdminSettings";
 import AdminProducts from "./admin/AdminProducts";
+
+// Authentication components
+import AdminLogin from "./auth/AdminLogin";
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -45,8 +51,7 @@ function App() {
       <ScrollToTop />
 
       <Routes>
-
-        {/* Public Website */}
+        {/* ================= PUBLIC WEBSITE ================= */}
 
         <Route
           path="/"
@@ -159,77 +164,86 @@ function App() {
           }
         />
 
-        {/* Admin */}
+        {/* ================= ADMIN LOGIN ================= */}
 
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route
+          path="/admin/login"
+          element={<AdminLogin />}
+        />
 
+        {/* ================= PROTECTED ADMIN ROUTES ================= */}
+
+        <Route element={<ProtectedRoute />}>
           <Route
-            index
-            element={<AdminDashboard />}
-          />
+            path="/admin"
+            element={<AdminLayout />}
+          >
+            <Route
+              index
+              element={<AdminDashboard />}
+            />
 
-          <Route
-            path="requests"
-            element={<AdminRequests />}
-          />
+            <Route
+              path="requests"
+              element={<AdminRequests />}
+            />
 
-          <Route
-            path="electricians"
-            element={<AdminElectricians />}
-          />
+            <Route
+              path="electricians"
+              element={<AdminElectricians />}
+            />
 
-          <Route
-            path="customers"
-            element={<AdminCustomers />}
-          />
+            <Route
+              path="customers"
+              element={<AdminCustomers />}
+            />
 
-          <Route
-            path="services"
-            element={<AdminServices />}
-          />
+            <Route
+              path="services"
+              element={<AdminServices />}
+            />
 
-          <Route
-            path="jobs"
-            element={<AdminJobs />}
-          />
+            <Route
+              path="jobs"
+              element={<AdminJobs />}
+            />
 
-          <Route
-            path="reviews"
-            element={<AdminReviews />}
-          />
+            <Route
+              path="reviews"
+              element={<AdminReviews />}
+            />
 
-          <Route
-            path="products"
-            element={<AdminProducts />}
-          />
+            <Route
+              path="products"
+              element={<AdminProducts />}
+            />
 
-          <Route
-            path="inventory"
-            element={<AdminInventory />}
-          />
+            <Route
+              path="inventory"
+              element={<AdminInventory />}
+            />
 
-          <Route
-            path="payments"
-            element={<AdminPayments />}
-          />
+            <Route
+              path="payments"
+              element={<AdminPayments />}
+            />
 
-          <Route
-            path="expenses"
-            element={<AdminExpenses />}
-          />
+            <Route
+              path="expenses"
+              element={<AdminExpenses />}
+            />
 
-          <Route
-            path="reports"
-            element={<AdminReports />}
-          />
+            <Route
+              path="reports"
+              element={<AdminReports />}
+            />
 
-          <Route
-            path="settings"
-            element={<AdminSettings />}
-          />
-
+            <Route
+              path="settings"
+              element={<AdminSettings />}
+            />
+          </Route>
         </Route>
-
       </Routes>
     </>
   );

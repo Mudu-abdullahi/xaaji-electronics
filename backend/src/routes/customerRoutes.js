@@ -1,4 +1,5 @@
 const express = require("express");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const {
   createCustomer,
@@ -14,15 +15,15 @@ const router = express.Router();
 router.post("/", createCustomer);
 
 // Get all customers
-router.get("/", getCustomers);
+router.get("/", requireAdmin, getCustomers);
 
 // Get one customer
-router.get("/:id", getCustomerById);
+router.get("/:id", requireAdmin, getCustomerById);
 
 // Update customer
-router.put("/:id", updateCustomer);
+router.put("/:id", requireAdmin, updateCustomer);
 
 // Delete customer
-router.delete("/:id", deleteCustomer);
+router.delete("/:id", requireAdmin, deleteCustomer);
 
 module.exports = router;

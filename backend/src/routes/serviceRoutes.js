@@ -1,4 +1,5 @@
 const express = require("express");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const {
   createService,
@@ -11,7 +12,7 @@ const {
 const router = express.Router();
 
 // Create a service
-router.post("/", createService);
+router.post("/", requireAdmin, createService);
 
 // Get all services
 router.get("/", getServices);
@@ -20,9 +21,9 @@ router.get("/", getServices);
 router.get("/:id", getServiceById);
 
 // Update a service
-router.put("/:id", updateService);
+router.put("/:id", requireAdmin, updateService);
 
 // Delete a service
-router.delete("/:id", deleteService);
+router.delete("/:id", requireAdmin, deleteService);
 
 module.exports = router;

@@ -1,6 +1,7 @@
+import adminFetch, { API_BASE_URL } from "../config/adminFetch";
 import { useEffect, useMemo, useState } from "react";
 
-const API_URL = "https://xaaji-electronics-api.onrender.com/api/jobs";
+const API_URL = `${API_BASE_URL}/api/jobs`;
 
 const initialJob = {
   customer: "",
@@ -40,7 +41,7 @@ function AdminJobs() {
       setLoading(true);
       setError("");
 
-      const response = await fetch(API_URL);
+      const response = await adminFetch(API_URL);
 
       const data = await response.json();
 
@@ -114,7 +115,7 @@ function AdminJobs() {
     try {
       setSubmitting(true);
 
-      const response = await fetch(API_URL, {
+      const response = await adminFetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -178,7 +179,7 @@ function AdminJobs() {
     try {
       setDeletingId(jobId);
 
-      const response = await fetch(
+      const response = await adminFetch(
         `${API_URL}/${jobId}`,
         {
           method: "DELETE",

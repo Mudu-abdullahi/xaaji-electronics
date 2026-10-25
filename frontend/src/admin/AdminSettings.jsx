@@ -1,7 +1,8 @@
+import adminFetch, { API_BASE_URL } from "../config/adminFetch";
 
 import { useEffect, useState } from "react";
 
-const API_URL = "https://xaaji-electronics-api.onrender.com/api/settings";
+const API_URL = `${API_BASE_URL}/api/settings`;
 
 const DEFAULT_SETTINGS = {
   businessName: "Xaaji Electronics",
@@ -30,7 +31,7 @@ function AdminSettings() {
       try {
         setLoading(true);
 
-        const response = await fetch(API_URL, {
+        const response = await adminFetch(API_URL, {
           signal: controller.signal,
         });
 
@@ -106,7 +107,7 @@ function AdminSettings() {
       setSaving(true);
       setMessage("");
 
-      const response = await fetch(API_URL, {
+      const response = await adminFetch(API_URL, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

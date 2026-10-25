@@ -1,5 +1,6 @@
 
 const express = require("express");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const {
   getExpenses,
@@ -10,6 +11,8 @@ const {
 } = require("../controllers/expenseController");
 
 const router = express.Router();
+
+router.use(requireAdmin);
 
 // Get all expenses
 router.get("/", getExpenses);

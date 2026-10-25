@@ -1,5 +1,6 @@
 
 const express = require("express");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const {
   getJobs,
@@ -10,6 +11,8 @@ const {
 } = require("../controllers/jobController");
 
 const router = express.Router();
+
+router.use(requireAdmin);
 
 // GET all jobs
 router.get("/", getJobs);

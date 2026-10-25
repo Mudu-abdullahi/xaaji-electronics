@@ -1,4 +1,5 @@
 const express = require("express");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const {
   getInventory,
@@ -9,6 +10,8 @@ const {
 } = require("../controllers/inventoryController");
 
 const router = express.Router();
+
+router.use(requireAdmin);
 
 // Get all inventory items
 router.get("/", getInventory);

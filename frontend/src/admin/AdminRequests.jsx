@@ -1,7 +1,8 @@
+import adminFetch, { API_BASE_URL } from "../config/adminFetch";
 import { useEffect, useState } from "react";
 
-const REQUESTS_API = "https://xaaji-electronics-api.onrender.com/api/requests";
-const ELECTRICIANS_API = "https://xaaji-electronics-api.onrender.com/api/electricians";
+const REQUESTS_API = `${API_BASE_URL}/api/requests`;
+const ELECTRICIANS_API = `${API_BASE_URL}/api/electricians`;
 
 function AdminRequests() {
   // =========================================================
@@ -34,7 +35,7 @@ function AdminRequests() {
       setLoading(true);
       setError("");
 
-      const response = await fetch(REQUESTS_API);
+      const response = await adminFetch(REQUESTS_API);
       const data = await response.json();
 
       if (!response.ok) {
@@ -69,7 +70,7 @@ function AdminRequests() {
     try {
       setLoadingElectricians(true);
 
-      const response = await fetch(ELECTRICIANS_API);
+      const response = await adminFetch(ELECTRICIANS_API);
       const data = await response.json();
 
       if (!response.ok) {
@@ -148,7 +149,7 @@ function AdminRequests() {
       setSaving(true);
       setError("");
 
-      const response = await fetch(
+      const response = await adminFetch(
         `${REQUESTS_API}/${selectedRequest._id}`,
         {
           method: "PUT",

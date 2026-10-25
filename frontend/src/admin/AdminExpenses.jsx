@@ -1,6 +1,7 @@
+import adminFetch, { API_BASE_URL } from "../config/adminFetch";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-const API_URL = "https://xaaji-electronics-api.onrender.com/api/expenses";
+const API_URL = `${API_BASE_URL}/api/expenses`;
 
 const CATEGORIES = [
   "Materials", "Transport", "Tools", "Rent", "Communication",
@@ -54,7 +55,7 @@ function AdminExpenses() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch(API_URL);
+      const response = await adminFetch(API_URL);
       const data = await response.json();
       if (!response.ok || !data.success) {
         throw new Error(data.message || "Could not load expenses.");
@@ -140,7 +141,7 @@ function AdminExpenses() {
     setNotice("");
     try {
       const isEditing = Boolean(editingExpense);
-      const response = await fetch(
+      const response = await adminFetch(
         isEditing ? `${API_URL}/${editingExpense._id}` : API_URL,
         {
           method: isEditing ? "PATCH" : "POST",
@@ -167,7 +168,7 @@ function AdminExpenses() {
     setError("");
     setNotice("");
     try {
-      const response = await fetch(`${API_URL}/${expense._id}`, { method: "DELETE" });
+      const response = await adminFetch(`${API_URL}/${expense._id}`, { method: "DELETE" });
       const data = await response.json();
       if (!response.ok || !data.success) {
         throw new Error(data.message || "Could not delete expense.");
@@ -184,7 +185,7 @@ function AdminExpenses() {
     setError("");
     setNotice("");
     try {
-      const response = await fetch(`${API_URL}/${expense._id}`, {
+      const response = await adminFetch(`${API_URL}/${expense._id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: nextStatus }),

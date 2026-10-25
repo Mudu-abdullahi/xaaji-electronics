@@ -1,8 +1,9 @@
+import adminFetch, { API_BASE_URL } from "../config/adminFetch";
 
 import { useCallback, useEffect, useState } from "react";
 
-const API_URL = "https://xaaji-electronics-api.onrender.com/api/services";
-const REQUESTS_URL = "https://xaaji-electronics-api.onrender.com/api/requests";
+const API_URL = `${API_BASE_URL}/api/services`;
+const REQUESTS_URL = `${API_BASE_URL}/api/requests`;
 
 const emptyForm = {
   name: "",
@@ -35,8 +36,8 @@ function AdminServices() {
 
     try {
       const [serviceResponse, requestResponse] = await Promise.all([
-        fetch(API_URL),
-        fetch(REQUESTS_URL),
+        adminFetch(API_URL),
+        adminFetch(REQUESTS_URL),
       ]);
 
       const serviceResult = await serviceResponse.json();
@@ -177,7 +178,7 @@ function AdminServices() {
         ? `${API_URL}/${editingId}`
         : API_URL;
 
-      const response = await fetch(url, {
+      const response = await adminFetch(url, {
         method: editingId ? "PUT" : "POST",
         headers: {
           "Content-Type": "application/json",
@@ -217,7 +218,7 @@ function AdminServices() {
     setMessage("");
 
     try {
-      const response = await fetch(`${API_URL}/${service._id}`, {
+      const response = await adminFetch(`${API_URL}/${service._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -254,7 +255,7 @@ function AdminServices() {
     setMessage("");
 
     try {
-      const response = await fetch(`${API_URL}/${service._id}`, {
+      const response = await adminFetch(`${API_URL}/${service._id}`, {
         method: "DELETE",
       });
 

@@ -1,7 +1,8 @@
+import adminFetch, { API_BASE_URL } from "../config/adminFetch";
 
 import { useEffect, useState } from "react";
 
-const API_URL = "https://xaaji-electronics-api.onrender.com/api/inventory";
+const API_URL = `${API_BASE_URL}/api/inventory`;
 
 function AdminInventory() {
   const [inventory, setInventory] = useState([]);
@@ -30,7 +31,7 @@ function AdminInventory() {
       setLoading(true);
       setError("");
 
-      const response = await fetch(API_URL);
+      const response = await adminFetch(API_URL);
       const data = await response.json();
 
       if (!response.ok || !data.success) {
@@ -159,7 +160,7 @@ function AdminInventory() {
 
       const method = editingItem ? "PUT" : "POST";
 
-      const response = await fetch(url, {
+      const response = await adminFetch(url, {
         method,
         headers: {
           "Content-Type": "application/json",
@@ -210,7 +211,7 @@ function AdminInventory() {
       setError("");
       setSuccess("");
 
-      const response = await fetch(`${API_URL}/${id}`, {
+      const response = await adminFetch(`${API_URL}/${id}`, {
         method: "DELETE",
       });
 

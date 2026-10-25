@@ -1,4 +1,5 @@
 const express = require("express");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const {
   createRequest,
@@ -20,24 +21,24 @@ router.post("/", createRequest);
 // GET ALL SERVICE REQUESTS
 // =========================================================
 
-router.get("/", getRequests);
+router.get("/", requireAdmin, getRequests);
 
 // =========================================================
 // GET ONE SERVICE REQUEST
 // =========================================================
 
-router.get("/:id", getRequestById);
+router.get("/:id", requireAdmin, getRequestById);
 
 // =========================================================
 // UPDATE SERVICE REQUEST
 // =========================================================
 
-router.put("/:id", updateRequest);
+router.put("/:id", requireAdmin, updateRequest);
 
 // =========================================================
 // DELETE SERVICE REQUEST
 // =========================================================
 
-router.delete("/:id", deleteRequest);
+router.delete("/:id", requireAdmin, deleteRequest);
 
 module.exports = router;

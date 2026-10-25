@@ -1,4 +1,5 @@
 const express = require("express");
+const requireAdmin = require("../middleware/authMiddleware");
 
 const {
   getElectricians,
@@ -14,10 +15,10 @@ router.get("/", getElectricians);
 
 router.get("/:id", getElectricianById);
 
-router.post("/", createElectrician);
+router.post("/", requireAdmin, createElectrician);
 
-router.put("/:id", updateElectrician);
+router.put("/:id", requireAdmin, updateElectrician);
 
-router.delete("/:id", deleteElectrician);
+router.delete("/:id", requireAdmin, deleteElectrician);
 
 module.exports = router;

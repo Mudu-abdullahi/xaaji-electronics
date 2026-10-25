@@ -1,6 +1,7 @@
+import adminFetch, { API_BASE_URL } from "../config/adminFetch";
 import { useEffect, useMemo, useState } from "react";
 
-const API_URL = "https://xaaji-electronics-api.onrender.com/api/reviews";
+const API_URL = `${API_BASE_URL}/api/reviews`;
 
 function AdminReviews() {
   // ========================================
@@ -32,7 +33,7 @@ function AdminReviews() {
       setLoading(true);
       setError("");
 
-      const response = await fetch(API_URL);
+      const response = await adminFetch(API_URL);
 
       const data = await response.json();
 
@@ -217,7 +218,7 @@ function AdminReviews() {
       setError("");
       setSuccessMessage("");
 
-      const response = await fetch(
+      const response = await adminFetch(
         `${API_URL}/${reviewId}`,
         {
           method: "PUT",
@@ -282,7 +283,7 @@ function AdminReviews() {
       setError("");
       setSuccessMessage("");
 
-      const response = await fetch(
+      const response = await adminFetch(
         `${API_URL}/${reviewId}`,
         {
           method: "PUT",
@@ -356,7 +357,7 @@ function AdminReviews() {
       setError("");
       setSuccessMessage("");
 
-      const response = await fetch(
+      const response = await adminFetch(
         `${API_URL}/${reviewId}`,
         {
           method: "DELETE",
